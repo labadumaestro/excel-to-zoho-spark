@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, ShoppingCart, User } from "lucide-react";
+import { Search, ShoppingCart, User, Upload } from "lucide-react";
 
 export const Navigation = () => {
   const categories = [
-    "Home", "Fridges", "Washers", "Gas Dryers", "Electrical Dryers", 
-    "Electrical Cooktops", "Gas Cooktops", "Wine Coolers", "Beverage Coolers", "More"
+    "Home", "Range Hoods", "Speed Ovens", "Wall Ovens", "Microwaves", 
+    "Refrigerators", "Washers", "Dryers", "Cooktops", "More"
   ];
 
   return (
@@ -14,11 +14,11 @@ export const Navigation = () => {
       <div className="bg-brand-dark text-white py-2 px-4">
         <div className="container mx-auto flex justify-between items-center text-sm">
           <div className="flex items-center gap-4">
-            <span>📧 info@yourcompanyname.com</span>
-            <span>📞 123-456-7890</span>
+            <span>📧 info@maxapplianceliquidation.com</span>
+            <span>📞 (555) 123-4567</span>
           </div>
           <div className="hidden md:block">
-            <span>Your trial ends in 9 days</span>
+            <span>Professional Appliance Liquidation Services</span>
           </div>
         </div>
       </div>
@@ -27,11 +27,14 @@ export const Navigation = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-brand-yellow to-brand-yellow/80 rounded-lg flex items-center justify-center">
-              <span className="text-brand-dark font-bold text-lg">S</span>
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-gradient-to-br from-brand-blue to-brand-blue/80 rounded-lg flex items-center justify-center border border-border/50">
+              <Upload className="w-6 h-6 text-white" />
             </div>
-            <span className="text-2xl font-bold text-foreground">spark</span>
+            <div>
+              <h1 className="text-xl font-bold text-foreground">Max Appliance Liquidation</h1>
+              <p className="text-sm text-muted-foreground">Upload your logo here</p>
+            </div>
           </div>
 
           {/* Search */}
@@ -39,7 +42,7 @@ export const Navigation = () => {
             <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input 
-                placeholder="Search" 
+                placeholder="Search appliances..." 
                 className="pl-10 pr-4 rounded-full border-muted"
               />
             </div>
@@ -65,7 +68,7 @@ export const Navigation = () => {
               <Button
                 key={category}
                 variant="ghost"
-                className="whitespace-nowrap text-sm hover:text-accent font-medium"
+                className="whitespace-nowrap text-sm hover:text-brand-blue font-medium"
               >
                 {category}
                 {category === "More" && " ▼"}

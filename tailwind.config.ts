@@ -47,11 +47,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Brand colors
+        // Brand colors for Max Appliance Liquidation
         brand: {
-          yellow: "hsl(var(--brand-yellow))",
+          blue: "hsl(var(--brand-blue))",
+          orange: "hsl(var(--brand-orange))",
           dark: "hsl(var(--brand-dark))",
-          green: "hsl(var(--brand-green))",
+          light: "hsl(var(--brand-light))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

@@ -2,54 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-/* E-commerce appliance store design system inspired by Spark */
+/* Max Appliance Liquidation - Light theme design system */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --background: 0 0% 98%;
+    --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 222 47% 11%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 20% 95%;
+    --secondary: 210 40% 96%;
     --secondary-foreground: 222 47% 11%;
 
-    --muted: 210 20% 95%;
+    --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 45 93% 47%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 24 70% 52%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 45 93% 47%;
+    --ring: 217 91% 60%;
 
     --radius: 0.75rem;
 
-    /* Brand colors */
-    --brand-yellow: 45 93% 47%;
+    /* Brand colors for Max Appliance Liquidation */
+    --brand-blue: 217 91% 60%;
+    --brand-orange: 24 70% 52%;
     --brand-dark: 222 47% 11%;
-    --brand-green: 142 69% 58%;
+    --brand-light: 210 40% 96%;
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(220 40% 15%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(45 93% 47%) 0%, hsl(38 92% 50%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(217 91% 70%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(24 70% 52%) 0%, hsl(24 70% 62%) 100%);
     
     /* Shadows */
     --shadow-card: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.06);
-    --shadow-hero: 0 25px 50px -12px hsl(0 0% 0% / 0.25);
-    --shadow-accent: 0 10px 25px -5px hsl(45 93% 47% / 0.3);
+    --shadow-hero: 0 25px 50px -12px hsl(217 91% 60% / 0.25);
+    --shadow-accent: 0 10px 25px -5px hsl(24 70% 52% / 0.3);
 
     --radius: 0.75rem;
 
@@ -80,8 +81,8 @@
     --popover: 222 47% 11%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 0 0% 100%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 217 33% 18%;
     --secondary-foreground: 0 0% 100%;
@@ -89,15 +90,15 @@
     --muted: 217 33% 18%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 45 93% 47%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 24 70% 52%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 217 33% 18%;
     --input: 217 33% 18%;
-    --ring: 45 93% 47%;
+    --ring: 217 91% 60%;
     
     /* Dark theme gradients */
     --gradient-hero: linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(217 33% 18%) 100%);

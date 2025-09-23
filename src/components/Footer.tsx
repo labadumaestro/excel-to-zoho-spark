@@ -4,11 +4,11 @@ import { Facebook, Instagram, Youtube, Tv } from "lucide-react";
 
 export const Footer = () => {
   const productLinks = [
-    "Smart Watches", "Wireless Earbuds", "Bluetooth Speakers", "Spark Gift Card"
+    "Range Hoods", "Speed Ovens", "Wall Ovens", "Microwaves", "Refrigerators"
   ];
   
   const businessLinks = [
-    "Spark For Business", "Corporate Enquiries", "Brand Partners"
+    "Max Appliance For Business", "Corporate Enquiries", "Liquidation Services"
   ];
   
   const aboutLinks = [
@@ -16,12 +16,12 @@ export const Footer = () => {
   ];
   
   const supportLinks = [
-    "Download your income", "Track your order", "Shipping and return policy", 
+    "Track your order", "Shipping and return policy", 
     "Product Support", "Register your Warranty", "Contact us"
   ];
   
   const legalLinks = [
-    "Terms and Conditions", "Privacy Policy", "Social Responsibilities"
+    "Terms and Conditions", "Privacy Policy", "Return Policy"
   ];
 
   return (
@@ -69,9 +69,9 @@ export const Footer = () => {
               </ul>
             </div>
 
-            {/* About Spark */}
+            {/* About Max Appliance */}
             <div>
-              <h4 className="font-bold text-lg mb-6">About Spark</h4>
+              <h4 className="font-bold text-lg mb-6">About Max Appliance</h4>
               <ul className="space-y-3">
                 {aboutLinks.map((link) => (
                   <li key={link}>
@@ -120,10 +120,10 @@ export const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-brand-yellow rounded-lg flex items-center justify-center">
-                <span className="text-brand-dark font-bold">S</span>
+              <div className="w-8 h-8 bg-brand-blue rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">M</span>
               </div>
-              <span className="text-xl font-bold">spark</span>
+              <span className="text-xl font-bold">Max Appliance Liquidation</span>
             </div>
 
             {/* Newsletter */}
@@ -141,16 +141,16 @@ export const Footer = () => {
             {/* Social */}
             <div className="flex items-center gap-2">
               <span className="text-white/80 mr-2">Follow us</span>
-              <Button variant="ghost" size="icon" className="text-white hover:text-brand-yellow">
+              <Button variant="ghost" size="icon" className="text-white hover:text-brand-blue">
                 <Facebook className="w-5 h-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="text-white hover:text-brand-yellow">
+              <Button variant="ghost" size="icon" className="text-white hover:text-brand-blue">
                 <Tv className="w-5 h-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="text-white hover:text-brand-yellow">
+              <Button variant="ghost" size="icon" className="text-white hover:text-brand-blue">
                 <Youtube className="w-5 h-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="text-white hover:text-brand-yellow">
+              <Button variant="ghost" size="icon" className="text-white hover:text-brand-blue">
                 <Instagram className="w-5 h-5" />
               </Button>
             </div>

@@ -19,24 +19,19 @@ interface ProductCardProps {
 export const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-card to-card/80">
-      <div className="aspect-square bg-muted/20 relative overflow-hidden">
-        {product.image ? (
-          <img 
-            src={product.image} 
-            alt={product.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-muted to-muted/60 flex items-center justify-center">
-            <div className="w-24 h-24 bg-brand-dark/10 rounded-lg flex items-center justify-center">
-              <span className="text-2xl text-muted-foreground">🏠</span>
+      <div className="aspect-square bg-gradient-to-br from-muted/30 to-muted/10 relative overflow-hidden">
+        <div className="w-full h-full bg-gradient-to-br from-background to-muted/20 flex items-center justify-center border-2 border-dashed border-border/30 group-hover:border-brand-blue/30 transition-all duration-300">
+          <div className="text-center">
+            <div className="w-16 h-16 bg-brand-blue/10 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:bg-brand-blue/20 transition-colors">
+              <span className="text-sm text-brand-blue font-medium">IMG</span>
             </div>
+            <p className="text-xs text-muted-foreground">Product Image</p>
           </div>
-        )}
+        </div>
         {product.grade && (
           <Badge 
             variant="secondary" 
-            className="absolute top-2 left-2 bg-background/90 text-foreground"
+            className="absolute top-3 left-3 bg-background/95 text-foreground shadow-sm"
           >
             {product.grade}
           </Badge>

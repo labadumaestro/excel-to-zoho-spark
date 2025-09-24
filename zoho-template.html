@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spark - Premium Kitchen Appliances & Home Solutions</title>
+    <title>Max Appliance Liquidation - Premium Kitchen Appliances & Home Solutions</title>
     <meta name="description" content="Discover premium kitchen appliances from top brands like Whirlpool, KitchenAid, Café, and Bertazzoni. Range hoods, speed ovens, and professional-grade appliances with up to 70% off.">
+    <meta name="keywords" content="appliance liquidation, kitchen appliances, refrigerators, range hoods, speed ovens, discount appliances">
+    <link rel="canonical" href="https://maxapplianceliquidation.com">
+    
     <style>
         * {
             margin: 0;
@@ -13,14 +16,15 @@
         }
 
         :root {
-            --brand-yellow: #FFCD3C;
-            --brand-dark: #1a1a1a;
-            --brand-green: #10B981;
-            --text-primary: #ffffff;
-            --text-secondary: #a1a1aa;
-            --bg-primary: #1a1a1a;
-            --bg-secondary: #2a2a2a;
-            --bg-card: #333333;
+            --brand-blue: #0ea5e9;
+            --brand-dark: #1e293b;
+            --text-primary: #334155;
+            --text-secondary: #64748b;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+            --accent-color: #f1f5f9;
         }
 
         body {
@@ -36,19 +40,41 @@
             padding: 0 1rem;
         }
 
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .animate-fade-in { animation: fadeIn 0.6s ease-out; }
+        .animate-slide-in { animation: slideIn 0.6s ease-out; }
+        .animate-scale-in { animation: scaleIn 0.4s ease-out; }
+
         /* Header */
         .header {
             background: var(--bg-primary);
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .top-bar {
             background: var(--brand-dark);
             padding: 0.5rem 0;
             font-size: 0.875rem;
+            color: white;
         }
 
         .top-bar-content {
@@ -65,26 +91,36 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: bold;
+            gap: 0.75rem;
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--brand-yellow), #FFA500);
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--brand-blue), #0284c7);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--brand-dark);
+            color: white;
+            border: 1px solid var(--border-color);
+        }
+
+        .logo-text h1 {
+            font-size: 1.25rem;
             font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .logo-text p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
         }
 
         .search-bar {
@@ -97,11 +133,17 @@
         .search-input {
             width: 100%;
             padding: 0.75rem 1rem 0.75rem 2.5rem;
-            border: 1px solid #444;
+            border: 1px solid var(--border-color);
             border-radius: 9999px;
             background: var(--bg-secondary);
             color: var(--text-primary);
             outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--brand-blue);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
         }
 
         .search-icon {
@@ -114,12 +156,12 @@
 
         .nav-actions {
             display: flex;
-            gap: 1rem;
+            gap: 0.5rem;
         }
 
         .btn {
             padding: 0.5rem 1rem;
-            border: none;
+            border: 1px solid transparent;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 500;
@@ -128,46 +170,51 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            font-size: 0.875rem;
         }
 
-        .btn-shop {
-            background: var(--brand-yellow);
-            color: var(--brand-dark);
-            padding: 0.75rem 2rem;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(255, 205, 60, 0.3);
-        }
-
-        .btn-shop:hover {
-            background: #e6b833;
-            transform: translateY(-2px);
-        }
-
-        .btn-details {
-            background: var(--brand-green);
+        .btn-primary {
+            background: var(--brand-blue);
             color: white;
-            padding: 0.5rem 1rem;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
-        .btn-details:hover {
-            background: #059669;
+        .btn-primary:hover {
+            background: #0284c7;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
         }
 
         .btn-ghost {
             background: transparent;
             color: var(--text-secondary);
-            border: 1px solid #444;
+            border: 1px solid var(--border-color);
         }
 
         .btn-ghost:hover {
-            background: var(--bg-secondary);
+            background: var(--accent-color);
             color: var(--text-primary);
+        }
+
+        .btn-hero {
+            background: var(--brand-blue);
+            color: white;
+            padding: 0.875rem 2rem;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 14px rgba(14, 165, 233, 0.4);
+        }
+
+        .btn-hero:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
         }
 
         /* Categories Nav */
         .categories-nav {
-            background: rgba(255, 255, 255, 0.05);
-            border-top: 1px solid #333;
+            background: var(--accent-color);
+            border-top: 1px solid var(--border-color);
             padding: 0.75rem 0;
         }
 
@@ -175,6 +222,7 @@
             display: flex;
             gap: 2rem;
             overflow-x: auto;
+            align-items: center;
         }
 
         .category-link {
@@ -183,40 +231,43 @@
             font-weight: 500;
             white-space: nowrap;
             transition: color 0.3s ease;
+            padding: 0.25rem 0;
         }
 
         .category-link:hover {
-            color: var(--brand-yellow);
+            color: var(--brand-blue);
         }
 
-        /* Hero Section */
-        .hero {
+        /* Hero Slider */
+        .hero-slider {
             position: relative;
-            height: 600px;
+            height: 500px;
             margin: 2rem 1rem;
             border-radius: 16px;
             overflow: hidden;
-            background: linear-gradient(135deg, var(--brand-dark) 0%, #2a2a2a 100%);
+            background: linear-gradient(135deg, var(--brand-dark) 0%, #334155 100%);
         }
 
-        .hero-content {
+        .slider-content {
             position: absolute;
             top: 50%;
             left: 4rem;
             transform: translateY(-50%);
             z-index: 10;
             color: white;
+            max-width: 50%;
         }
 
         .hero-badge {
-            background: var(--brand-yellow);
-            color: var(--brand-dark);
+            background: rgba(14, 165, 233, 0.2);
+            color: var(--brand-blue);
             padding: 0.5rem 1rem;
             border-radius: 9999px;
             font-size: 0.875rem;
             font-weight: 600;
             display: inline-block;
             margin-bottom: 1rem;
+            border: 1px solid rgba(14, 165, 233, 0.3);
         }
 
         .hero-title {
@@ -227,27 +278,143 @@
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
+            color: var(--brand-blue);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 2rem;
-            max-width: 400px;
         }
 
-        /* Products Grid */
-        .section {
-            padding: 4rem 1rem;
-        }
-
-        .section-header {
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 3rem;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-controls:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .slider-prev { left: 1rem; }
+        .slider-next { right: 1rem; }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: var(--brand-blue);
+            transform: scale(1.25);
+        }
+
+        /* Categories Section */
+        .categories-section {
+            padding: 4rem 1rem;
         }
 
         .section-title {
             font-size: 2rem;
             font-weight: bold;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .category-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--brand-blue);
+        }
+
+        .category-image {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-color), #e2e8f0);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            border: 2px dashed rgba(14, 165, 233, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .category-image {
+            border-color: var(--brand-blue);
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(14, 165, 233, 0.05));
+            transform: scale(1.05);
+        }
+
+        .category-name {
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+
+        .category-card:hover .category-name {
+            color: var(--brand-blue);
+        }
+
+        /* Products Grid */
+        .products-section {
+            padding: 4rem 1rem;
+        }
+
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
         }
 
         .products-grid {
@@ -258,6 +425,7 @@
 
         .product-card {
             background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -266,59 +434,97 @@
 
         .product-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--brand-blue);
         }
 
         .product-image {
             aspect-ratio: 1;
-            background: linear-gradient(135deg, #404040, #505050);
+            background: linear-gradient(135deg, var(--accent-color), #f1f5f9);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
             position: relative;
+            border: 2px dashed rgba(14, 165, 233, 0.2);
+            margin: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            border-color: var(--brand-blue);
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(14, 165, 233, 0.05));
+        }
+
+        .image-placeholder {
+            text-align: center;
+        }
+
+        .image-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(14, 165, 233, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            color: var(--brand-blue);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .image-icon {
+            background: rgba(14, 165, 233, 0.2);
+            transform: scale(1.1);
         }
 
         .product-badge {
             position: absolute;
             top: 0.5rem;
             left: 0.5rem;
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--brand-dark);
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--text-primary);
             padding: 0.25rem 0.5rem;
             border-radius: 4px;
             font-size: 0.75rem;
             font-weight: 500;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .product-info {
-            padding: 1rem;
+            padding: 1.5rem;
         }
 
         .product-brand {
             background: transparent;
-            border: 1px solid #555;
+            border: 1px solid var(--border-color);
             color: var(--text-secondary);
             padding: 0.25rem 0.5rem;
             border-radius: 4px;
             font-size: 0.75rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             display: inline-block;
         }
 
         .product-title {
-            font-size: 0.875rem;
+            font-size: 1rem;
             font-weight: 600;
             line-height: 1.4;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            transition: color 0.3s ease;
+        }
+
+        .product-card:hover .product-title {
+            color: var(--brand-blue);
         }
 
         .product-price {
-            font-size: 1.125rem;
+            font-size: 1.25rem;
             font-weight: bold;
             color: var(--text-primary);
             margin-bottom: 1rem;
@@ -327,6 +533,74 @@
         .product-actions {
             display: flex;
             gap: 0.5rem;
+        }
+
+        .btn-details {
+            background: #10b981;
+            color: white;
+            flex: 1;
+            padding: 0.625rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .btn-details:hover {
+            background: #059669;
+        }
+
+        .btn-like {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            width: 40px;
+            padding: 0.625rem;
+        }
+
+        .btn-like:hover {
+            background: var(--accent-color);
+            color: #ef4444;
+        }
+
+        /* Special Offer */
+        .special-offer {
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, var(--brand-dark) 0%, #334155 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .offer-badge {
+            background: rgba(14, 165, 233, 0.2);
+            color: var(--brand-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .offer-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .offer-subtitle {
+            font-size: 1.5rem;
+            color: var(--brand-blue);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .offer-description {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Footer */
@@ -338,6 +612,7 @@
         .newsletter {
             padding: 4rem 1rem;
             text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .newsletter h3 {
@@ -359,10 +634,10 @@
             border-radius: 6px;
             background: rgba(255, 255, 255, 0.1);
             color: white;
+            outline: none;
         }
 
         .footer-links {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding: 3rem 1rem;
         }
 
@@ -425,8 +700,67 @@
         }
 
         .social-link:hover {
-            background: var(--brand-yellow);
-            color: var(--brand-dark);
+            background: var(--brand-blue);
+            transform: scale(1.1);
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 2rem 1rem;
+            background: var(--accent-color);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .filter-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-tag {
+            background: white;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tag:hover {
+            background: var(--brand-blue);
+            color: white;
+            border-color: var(--brand-blue);
+        }
+
+        .filter-count {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 2rem 1rem;
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--brand-blue);
         }
 
         /* Responsive */
@@ -441,16 +775,17 @@
                 max-width: none;
             }
 
-            .hero-content {
+            .slider-content {
                 left: 2rem;
                 right: 2rem;
+                max-width: none;
             }
 
-            .hero-title {
+            .hero-title, .offer-title {
                 font-size: 2rem;
             }
 
-            .section-header {
+            .products-header, .filter-content {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 1rem;
@@ -460,6 +795,34 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Page Transitions */
+        .page-enter {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .page-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+
+        /* Loading States */
+        .loading-shimmer {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
     </style>
 </head>
@@ -470,10 +833,10 @@
             <div class="container">
                 <div class="top-bar-content">
                     <div>
-                        📧 info@sparkapp.com | 📞 123-456-7890
+                        📧 info@maxapplianceliquidation.com | 📞 (555) 123-4567
                     </div>
                     <div>
-                        Your trial ends in 9 days
+                        Professional Appliance Liquidation Services
                     </div>
                 </div>
             </div>
@@ -483,168 +846,274 @@
             <div class="container">
                 <div class="nav-content">
                     <div class="logo">
-                        <div class="logo-icon">S</div>
-                        <span>spark</span>
+                        <div class="logo-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17,8 12,3 7,8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                        </div>
+                        <div class="logo-text">
+                            <h1>Max Appliance Liquidation</h1>
+                            <p>Upload your logo here</p>
+                        </div>
                     </div>
 
                     <div class="search-bar">
                         <div class="search-icon">🔍</div>
-                        <input type="text" class="search-input" placeholder="Search">
+                        <input type="text" class="search-input" placeholder="Search appliances..." id="searchInput">
                     </div>
 
                     <div class="nav-actions">
-                        <button class="btn btn-ghost">👤</button>
-                        <button class="btn btn-ghost">🛒</button>
+                        <button class="btn btn-ghost">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </button>
+                        <button class="btn btn-ghost">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="m1 1 4 4 0 0 4.39 0 3.61 13h9"></path>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
         </nav>
 
-        <div class="categories-nav">
+        <nav class="categories-nav">
             <div class="container">
                 <div class="categories-list">
                     <a href="#" class="category-link">Home</a>
-                    <a href="#" class="category-link">Fridges</a>
-                    <a href="#" class="category-link">Washers</a>
-                    <a href="#" class="category-link">Gas Dryers</a>
-                    <a href="#" class="category-link">Electrical Dryers</a>
-                    <a href="#" class="category-link">Electrical Cooktops</a>
-                    <a href="#" class="category-link">Gas Cooktops</a>
-                    <a href="#" class="category-link">Wine Coolers</a>
-                    <a href="#" class="category-link">Beverage Coolers</a>
+                    <a href="#range-hoods" class="category-link">Range Hoods</a>
+                    <a href="#speed-ovens" class="category-link">Speed Ovens</a>
+                    <a href="#wall-ovens" class="category-link">Wall Ovens</a>
+                    <a href="#microwaves" class="category-link">Microwaves</a>
+                    <a href="#refrigerators" class="category-link">Refrigerators</a>
                     <a href="#" class="category-link">More ▼</a>
                 </div>
             </div>
-        </div>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">Special Discount ✨</div>
-            <h1 class="hero-title">CHOOSE VIKING 60<br>CHOOSE SAVINGS!</h1>
-            <p class="hero-subtitle">UPTO 70% OFF</p>
-            <button class="btn btn-shop">Shop Now</button>
+    <!-- Hero Slider -->
+    <section class="hero-slider" id="heroSlider">
+        <div class="slider-content animate-slide-in">
+            <div class="hero-badge" id="heroCategory">Max Savings ✨</div>
+            <h1 class="hero-title" id="heroTitle">PROFESSIONAL APPLIANCE LIQUIDATION!</h1>
+            <h2 class="hero-subtitle" id="heroSubtitle">UP TO 70% OFF RETAIL PRICES</h2>
+            <p class="hero-description" id="heroDescription">Premium kitchen appliances from top brands with professional installation and warranty</p>
+            <button class="btn btn-hero animate-scale-in">Shop Now</button>
+        </div>
+        
+        <button class="slider-controls slider-prev" onclick="prevSlide()">‹</button>
+        <button class="slider-controls slider-next" onclick="nextSlide()">›</button>
+        
+        <div class="slider-dots">
+            <div class="slider-dot active" onclick="setSlide(0)"></div>
+            <div class="slider-dot" onclick="setSlide(1)"></div>
+            <div class="slider-dot" onclick="setSlide(2)"></div>
         </div>
     </section>
 
-    <!-- Latest Products -->
-    <section class="section">
+    <!-- Categories Section -->
+    <section class="categories-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Latest Products</h2>
-                <a href="#" class="btn btn-ghost">View All →</a>
-            </div>
-
-            <div class="products-grid" id="products-grid">
-                <!-- Products will be inserted here by JavaScript -->
+            <h2 class="section-title animate-fade-in">Shop by Categories</h2>
+            <div class="categories-grid">
+                <a href="#range-hoods" class="category-card animate-fade-in" style="animation-delay: 0.1s">
+                    <div class="category-image">
+                        <span style="font-size: 0.75rem; color: var(--text-secondary);">Image placeholder</span>
+                    </div>
+                    <div class="category-name">Range Hoods</div>
+                </a>
+                <a href="#speed-ovens" class="category-card animate-fade-in" style="animation-delay: 0.2s">
+                    <div class="category-image">
+                        <span style="font-size: 0.75rem; color: var(--text-secondary);">Image placeholder</span>
+                    </div>
+                    <div class="category-name">Speed Ovens</div>
+                </a>
+                <a href="#wall-ovens" class="category-card animate-fade-in" style="animation-delay: 0.3s">
+                    <div class="category-image">
+                        <span style="font-size: 0.75rem; color: var(--text-secondary);">Image placeholder</span>
+                    </div>
+                    <div class="category-name">Wall Ovens</div>
+                </a>
+                <a href="#microwaves" class="category-card animate-fade-in" style="animation-delay: 0.4s">
+                    <div class="category-image">
+                        <span style="font-size: 0.75rem; color: var(--text-secondary);">Image placeholder</span>
+                    </div>
+                    <div class="category-name">Microwaves</div>
+                </a>
+                <a href="#refrigerators" class="category-card animate-fade-in" style="animation-delay: 0.5s">
+                    <div class="category-image">
+                        <span style="font-size: 0.75rem; color: var(--text-secondary);">Image placeholder</span>
+                    </div>
+                    <div class="category-name">Refrigerators</div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- All Products -->
-    <section class="section" style="background: rgba(255, 255, 255, 0.02);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">All Products</h2>
-                <a href="#" class="btn btn-ghost">View All →</a>
-            </div>
+    <!-- Main Page Content -->
+    <main id="mainContent">
+        <!-- Home Page -->
+        <div id="homePage" class="page-content">
+            <!-- Featured Products -->
+            <section class="products-section">
+                <div class="container">
+                    <div class="products-header">
+                        <h2 class="section-title">Featured Products</h2>
+                        <button class="btn btn-primary">View All →</button>
+                    </div>
+                    
+                    <div class="products-grid" id="featuredProducts">
+                        <!-- Products will be dynamically loaded -->
+                    </div>
+                </div>
+            </section>
 
-            <div class="products-grid" id="all-products-grid">
-                <!-- Products will be inserted here by JavaScript -->
-            </div>
+            <!-- Latest Products -->
+            <section class="products-section" style="background: var(--accent-color);">
+                <div class="container">
+                    <div class="products-header">
+                        <h2 class="section-title">Latest Products</h2>
+                        <button class="btn btn-primary">View All →</button>
+                    </div>
+                    
+                    <div class="products-grid" id="latestProducts">
+                        <!-- Products will be dynamically loaded -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Refrigerators Page -->
+        <div id="refrigeratorsPage" class="page-content" style="display: none;">
+            <!-- Breadcrumb -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <nav style="font-size: 0.875rem; color: var(--text-secondary);">
+                        <a href="#" onclick="showPage('home')">Home</a>
+                        <span style="margin: 0 0.5rem;">→</span>
+                        <span style="color: var(--text-primary);">Refrigerators</span>
+                    </nav>
+                </div>
+            </section>
+
+            <!-- Filter Section -->
+            <section class="filter-section">
+                <div class="container">
+                    <div class="filter-content">
+                        <div class="filter-tags">
+                            <a href="#" class="filter-tag">All Types</a>
+                            <a href="#" class="filter-tag">French Door</a>
+                            <a href="#" class="filter-tag">Side-by-Side</a>
+                            <a href="#" class="filter-tag">Counter-Depth</a>
+                            <a href="#" class="filter-tag">Smart Features</a>
+                        </div>
+                        <div class="filter-count">6 products found</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Refrigerator Products -->
+            <section class="products-section">
+                <div class="container">
+                    <div class="products-grid" id="refrigeratorProducts">
+                        <!-- Refrigerator products will be loaded here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Special Offer -->
+    <section class="special-offer">
+        <div class="container">
+            <div class="offer-badge animate-fade-in">Limited Time Offer</div>
+            <h2 class="offer-title animate-fade-in">Professional Appliances</h2>
+            <h3 class="offer-subtitle animate-fade-in">Starting from $650</h3>
+            <p class="offer-description animate-fade-in">Save up to 70% on professional-grade kitchen appliances with advanced features and premium finishes</p>
+            <button class="btn btn-hero animate-scale-in">Shop Now</button>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="newsletter">
+        <section class="newsletter">
             <div class="container">
-                <h3>Subscribe to our Mail alerts</h3>
-                <div class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Enter Your Email Address">
-                    <button class="btn btn-shop">Submit</button>
-                </div>
+                <h3>Stay updated with our latest deals</h3>
+                <p style="margin-bottom: 2rem; color: rgba(255, 255, 255, 0.8);">Get exclusive access to liquidation sales and new arrivals</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email">
+                    <button class="btn btn-primary">Subscribe</button>
+                </form>
             </div>
-        </div>
+        </section>
 
-        <div class="footer-links">
+        <section class="footer-links">
             <div class="container">
                 <div class="footer-grid">
                     <div class="footer-column">
-                        <h4>Our Products</h4>
+                        <h4>Products</h4>
                         <ul>
-                            <li><a href="#">Range Hoods</a></li>
-                            <li><a href="#">Speed Ovens</a></li>
-                            <li><a href="#">Wall Ovens</a></li>
-                            <li><a href="#">Microwaves</a></li>
-                        </ul>
-                        <h4 style="margin-top: 2rem;">For Business</h4>
-                        <ul>
-                            <li><a href="#">Spark For Business</a></li>
-                            <li><a href="#">Corporate Enquiries</a></li>
-                            <li><a href="#">Brand Partners</a></li>
+                            <li><a href="#range-hoods">Range Hoods</a></li>
+                            <li><a href="#speed-ovens">Speed Ovens</a></li>
+                            <li><a href="#wall-ovens">Wall Ovens</a></li>
+                            <li><a href="#microwaves">Microwaves</a></li>
+                            <li><a href="#refrigerators">Refrigerators</a></li>
                         </ul>
                     </div>
-
                     <div class="footer-column">
-                        <h4>About Spark</h4>
+                        <h4>Company</h4>
                         <ul>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact</a></li>
                             <li><a href="#">Careers</a></li>
-                            <li><a href="#">In the Press</a></li>
+                            <li><a href="#">Press</a></li>
                         </ul>
                     </div>
-
                     <div class="footer-column">
                         <h4>Support</h4>
                         <ul>
-                            <li><a href="#">Download your income</a></li>
-                            <li><a href="#">Track your order</a></li>
-                            <li><a href="#">Shipping and return policy</a></li>
-                            <li><a href="#">Product Support</a></li>
-                            <li><a href="#">Register your Warranty</a></li>
-                            <li><a href="#">Contact us</a></li>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Shipping Info</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Warranty</a></li>
                         </ul>
                     </div>
-
                     <div class="footer-column">
                         <h4>Legal</h4>
                         <ul>
-                            <li><a href="#">Terms and Conditions</a></li>
                             <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Social Responsibilities</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="footer-bottom">
-            <div class="container">
-                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 1rem;">
-                    <div class="logo">
-                        <div class="logo-icon">S</div>
-                        <span>spark</span>
-                    </div>
-
-                    <div style="text-align: center;">Subscribe to our Mail alerts</div>
-
-                    <div class="social-links">
-                        <span style="margin-right: 1rem;">Follow us</span>
-                        <a href="#" class="social-link">📘</a>
-                        <a href="#" class="social-link">📺</a>
-                        <a href="#" class="social-link">▶️</a>
-                        <a href="#" class="social-link">📷</a>
-                    </div>
+        <section class="footer-bottom">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <div>
+                    <p>&copy; 2024 Max Appliance Liquidation. All rights reserved.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">i</a>
+                    <a href="#" class="social-link">y</a>
                 </div>
             </div>
-        </div>
+        </section>
     </footer>
 
     <script>
-        // Product data from Excel file
+        // Product Data
         const products = [
             {
                 id: "7195464000000095045",
@@ -696,7 +1165,7 @@
                 name: "Bertazzoni Professional 30\" Under-Cabinet Range Hood, Stainless (KU30PRO1XV) (02)",
                 price: "USD 650.00",
                 brand: "Bertazzoni",
-                category: "Range Hoods", 
+                category: "Range Hoods",
                 grade: "Grade A",
                 sku: "RH-BTZ-KU30PRO1XV-SS-02"
             },
@@ -720,64 +1189,260 @@
             }
         ];
 
-        // Function to create product card HTML
-        function createProductCard(product) {
+        const refrigeratorProducts = [
+            {
+                id: "ref-001",
+                name: "Samsung 28 cu. ft. French Door Refrigerator with Twin Cooling Plus",
+                price: "USD 2,450.00",
+                brand: "Samsung",
+                grade: "Grade A",
+                category: "French Door"
+            },
+            {
+                id: "ref-002", 
+                name: "LG 30 cu. ft. Smart Wi-Fi Enabled InstaView Door-in-Door Refrigerator",
+                price: "USD 3,200.00",
+                brand: "LG",
+                grade: "Grade A",
+                category: "Smart"
+            },
+            {
+                id: "ref-003",
+                name: "Whirlpool 25 cu. ft. Side-by-Side Refrigerator with Ice Maker",
+                price: "USD 1,850.00", 
+                brand: "Whirlpool",
+                grade: "Grade B",
+                category: "Side-by-Side"
+            },
+            {
+                id: "ref-004",
+                name: "KitchenAid 24 cu. ft. Counter-Depth French Door Refrigerator",
+                price: "USD 2,800.00",
+                brand: "KitchenAid", 
+                grade: "Grade A",
+                category: "Counter-Depth"
+            },
+            {
+                id: "ref-005",
+                name: "GE Profile 27 cu. ft. Energy Star French Door Refrigerator",
+                price: "USD 2,100.00",
+                brand: "GE Profile",
+                grade: "Grade A",
+                category: "Energy Star"
+            },
+            {
+                id: "ref-006",
+                name: "Frigidaire 32 cu. ft. Professional Series Refrigerator",
+                price: "USD 3,600.00",
+                brand: "Frigidaire",
+                grade: "Grade A",
+                category: "Professional"
+            }
+        ];
+
+        // Hero Slider Data
+        const heroSlides = [
+            {
+                category: "Max Savings ✨",
+                title: "PROFESSIONAL APPLIANCE LIQUIDATION!",
+                subtitle: "UP TO 70% OFF RETAIL PRICES",
+                description: "Premium kitchen appliances from top brands with professional installation and warranty"
+            },
+            {
+                category: "❄️ Refrigerators Collection",
+                title: "Premium Refrigerators",
+                subtitle: "Professional-Grade Cooling Solutions", 
+                description: "Up to 60% off retail prices on luxury refrigerators with smart technology"
+            },
+            {
+                category: "🔥 Speed Ovens Special",
+                title: "Advanced Speed Ovens",
+                subtitle: "Commercial-Grade Performance",
+                description: "Professional speed ovens with convection and microwave technology combined"
+            }
+        ];
+
+        // Current slide index
+        let currentSlideIndex = 0;
+
+        // Hero Slider Functions
+        function updateSlide() {
+            const slide = heroSlides[currentSlideIndex];
+            document.getElementById('heroCategory').textContent = slide.category;
+            document.getElementById('heroTitle').textContent = slide.title;
+            document.getElementById('heroSubtitle').textContent = slide.subtitle;
+            document.getElementById('heroDescription').textContent = slide.description;
+
+            // Update dots
+            const dots = document.querySelectorAll('.slider-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlideIndex);
+            });
+
+            // Add animation
+            const content = document.querySelector('.slider-content');
+            content.style.animation = 'none';
+            content.offsetHeight; // Trigger reflow
+            content.style.animation = 'slideIn 0.6s ease-out';
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % heroSlides.length;
+            updateSlide();
+        }
+
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + heroSlides.length) % heroSlides.length;
+            updateSlide();
+        }
+
+        function setSlide(index) {
+            currentSlideIndex = index;
+            updateSlide();
+        }
+
+        // Auto-advance slides
+        setInterval(nextSlide, 5000);
+
+        // Product Card Generation
+        function createProductCard(product, isRefrigerator = false) {
+            const categoryIcon = isRefrigerator ? 'REF' : 'IMG';
+            const categoryText = isRefrigerator ? 'Refrigerator Image' : 'Product Image';
+            
             return `
-                <div class="product-card">
+                <div class="product-card animate-fade-in">
                     <div class="product-image">
-                        <div class="product-badge">${product.grade}</div>
-                        🏠
+                        <div class="image-placeholder">
+                            <div class="image-icon">${categoryIcon}</div>
+                            <p style="font-size: 0.75rem; color: var(--text-secondary);">${categoryText}</p>
+                        </div>
+                        ${product.grade ? `<div class="product-badge">${product.grade}</div>` : ''}
+                        ${product.category && isRefrigerator ? `
+                            <div class="product-badge" style="right: 0.5rem; left: auto; background: rgba(14, 165, 233, 0.1); color: var(--brand-blue); border: 1px solid rgba(14, 165, 233, 0.3);">
+                                ${product.category}
+                            </div>
+                        ` : ''}
                     </div>
                     <div class="product-info">
                         <div class="product-brand">${product.brand}</div>
                         <h3 class="product-title">${product.name}</h3>
                         <div class="product-price">${product.price}</div>
                         <div class="product-actions">
-                            <button class="btn btn-details" style="flex: 1;">VIEW DETAILS</button>
-                            <button class="btn btn-ghost">♡</button>
+                            <button class="btn btn-details">VIEW DETAILS</button>
+                            <button class="btn btn-like">♡</button>
                         </div>
                     </div>
                 </div>
             `;
         }
 
-        // Function to render products
-        function renderProducts() {
-            const latestProductsGrid = document.getElementById('products-grid');
-            const allProductsGrid = document.getElementById('all-products-grid');
+        // Load Products
+        function loadProducts() {
+            const featuredContainer = document.getElementById('featuredProducts');
+            const latestContainer = document.getElementById('latestProducts');
+            const refrigeratorContainer = document.getElementById('refrigeratorProducts');
 
-            // Show first 4 products in "Latest Products"
-            const latestProducts = products.slice(0, 4);
-            latestProductsGrid.innerHTML = latestProducts.map(createProductCard).join('');
+            // Load featured products (first 4)
+            if (featuredContainer) {
+                featuredContainer.innerHTML = products.slice(0, 4).map(product => createProductCard(product)).join('');
+            }
 
-            // Show remaining products in "All Products"
-            const allProducts = products.slice(4);
-            allProductsGrid.innerHTML = allProducts.map(createProductCard).join('');
+            // Load latest products (last 4)
+            if (latestContainer) {
+                latestContainer.innerHTML = products.slice(4, 8).map(product => createProductCard(product)).join('');
+            }
+
+            // Load refrigerator products
+            if (refrigeratorContainer) {
+                refrigeratorContainer.innerHTML = refrigeratorProducts.map(product => createProductCard(product, true)).join('');
+            }
         }
 
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            renderProducts();
+        // Page Navigation
+        function showPage(pageType) {
+            const homePage = document.getElementById('homePage');
+            const refrigeratorsPage = document.getElementById('refrigeratorsPage');
+            
+            if (pageType === 'home') {
+                homePage.style.display = 'block';
+                refrigeratorsPage.style.display = 'none';
+                // Update slider for home page
+                currentSlideIndex = 0;
+                updateSlide();
+            } else if (pageType === 'refrigerators') {
+                homePage.style.display = 'none';
+                refrigeratorsPage.style.display = 'block';
+                // Update slider for refrigerators page
+                currentSlideIndex = 1;
+                updateSlide();
+            }
+        }
 
-            // Add click event listeners for buttons
-            document.addEventListener('click', function(e) {
-                if (e.target.matches('.btn-shop') || e.target.matches('.btn-details')) {
-                    alert('Redirecting to product page...');
-                }
-            });
-
-            // Newsletter form submission
-            const newsletterForm = document.querySelector('.newsletter-form');
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const email = this.querySelector('.newsletter-input').value;
-                    if (email) {
-                        alert('Thank you for subscribing!');
-                        this.querySelector('.newsletter-input').value = '';
-                    }
+        // Search Functionality
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    // Add search logic here
+                    console.log('Searching for:', searchTerm);
                 });
             }
+        }
+
+        // Category Navigation
+        function setupCategoryNavigation() {
+            // Category links
+            const categoryLinks = document.querySelectorAll('.category-link');
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#refrigerators') {
+                        e.preventDefault();
+                        showPage('refrigerators');
+                    }
+                });
+            });
+
+            // Category cards
+            const categoryCards = document.querySelectorAll('.category-card');
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#refrigerators') {
+                        e.preventDefault();
+                        showPage('refrigerators');
+                    }
+                });
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+            setupSearch();
+            setupCategoryNavigation();
+            updateSlide();
+            
+            // Add stagger animation to elements
+            const animateElements = document.querySelectorAll('.animate-fade-in');
+            animateElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>

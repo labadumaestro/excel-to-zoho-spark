@@ -34,21 +34,24 @@ const Index = () => {
           <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Shop by Categories</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-4">
             {[
-              { icon: "🏠", name: "Range Hoods" },
-              { icon: "🔥", name: "Speed Ovens" },
-              { icon: "📦", name: "Wall Ovens" },
-              { icon: "⚡", name: "Microwaves" },
-              { icon: "❄️", name: "Refrigerators" }
+              { name: "Range Hoods", link: "#range-hoods" },
+              { name: "Speed Ovens", link: "#speed-ovens" },
+              { name: "Wall Ovens", link: "#wall-ovens" },
+              { name: "Microwaves", link: "#microwaves" },
+              { name: "Refrigerators", link: "/refrigerators" }
             ].map((category) => (
-              <div
+              <a
                 key={category.name}
-                className="flex flex-col items-center p-6 rounded-xl bg-card hover:bg-accent/10 transition-colors cursor-pointer group border border-border/50"
+                href={category.link}
+                className="flex flex-col items-center p-6 rounded-xl bg-card hover:bg-accent/10 transition-all duration-300 cursor-pointer group border border-border/50 hover:shadow-lg hover:-translate-y-1"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-brand-blue/10 to-brand-blue/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                  <span className="text-3xl">{category.icon}</span>
+                <div className="w-20 h-20 bg-gradient-to-br from-muted to-muted/60 rounded-lg flex items-center justify-center mb-3 group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                  <div className="w-full h-full bg-brand-blue/5 flex items-center justify-center rounded-lg border-2 border-dashed border-brand-blue/20">
+                    <span className="text-xs text-muted-foreground text-center px-2">Image placeholder</span>
+                  </div>
                 </div>
-                <span className="text-sm font-medium text-center text-foreground">{category.name}</span>
-              </div>
+                <span className="text-sm font-medium text-center text-foreground group-hover:text-brand-blue transition-colors">{category.name}</span>
+              </a>
             ))}
           </div>
         </div>

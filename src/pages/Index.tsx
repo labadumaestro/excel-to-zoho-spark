@@ -1,11 +1,11 @@
 import { Navigation } from "@/components/Navigation";
+import { HeroSlider } from "@/components/HeroSlider";
 import { HeroBanner } from "@/components/HeroBanner";
 import { ProductCard } from "@/components/ProductCard";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { products } from "@/data/products";
-import heroKitchen from "@/assets/hero-kitchen.jpg";
 import productivityBanner from "@/assets/productivity-banner.jpg";
 import gamingBanner from "@/assets/gaming-banner.jpg";
 
@@ -17,21 +17,13 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="relative">
-        <HeroBanner
-          title="PROFESSIONAL APPLIANCE LIQUIDATION!"
-          subtitle="UP TO 70% OFF RETAIL PRICES"
-          discount="Max Savings ✨"
-          image={heroKitchen}
-          className="mx-4 mt-8 h-[500px] md:h-[600px]"
-        />
-      </section>
+      {/* Hero Slider Section */}
+      <HeroSlider />
 
       {/* Shop by Categories */}
       <section className="py-16 px-4">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Shop by Categories</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground animate-fade-in">Shop by Categories</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-4">
             {[
               { name: "Range Hoods", link: "#range-hoods" },
@@ -39,15 +31,21 @@ const Index = () => {
               { name: "Wall Ovens", link: "#wall-ovens" },
               { name: "Microwaves", link: "#microwaves" },
               { name: "Refrigerators", link: "/refrigerators" }
-            ].map((category) => (
+            ].map((category, index) => (
               <a
                 key={category.name}
                 href={category.link}
-                className="flex flex-col items-center p-6 rounded-xl bg-card hover:bg-accent/10 transition-all duration-300 cursor-pointer group border border-border/50 hover:shadow-lg hover:-translate-y-1"
+                className="flex flex-col items-center p-6 rounded-xl bg-card hover:bg-accent/10 transition-all duration-300 cursor-pointer group border border-border/50 hover:shadow-lg hover-lift animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-muted to-muted/60 rounded-lg flex items-center justify-center mb-3 group-hover:scale-105 transition-transform duration-300 overflow-hidden">
-                  <div className="w-full h-full bg-brand-blue/5 flex items-center justify-center rounded-lg border-2 border-dashed border-brand-blue/20">
-                    <span className="text-xs text-muted-foreground text-center px-2">Image placeholder</span>
+                <div className="w-20 h-20 bg-gradient-to-br from-muted to-muted/60 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-all duration-500 overflow-hidden shadow-md hover:shadow-lg border border-border/30">
+                  <div className="w-full h-full bg-gradient-to-br from-brand-blue/10 to-brand-blue/5 flex items-center justify-center rounded-lg border-2 border-dashed border-brand-blue/30 hover:border-brand-blue/50 transition-colors duration-300">
+                    <div className="text-center">
+                      <div className="w-8 h-8 bg-brand-blue/20 rounded-md flex items-center justify-center mx-auto mb-1">
+                        <span className="text-xs text-brand-blue font-bold">IMG</span>
+                      </div>
+                      <span className="text-[10px] text-muted-foreground">Ready</span>
+                    </div>
                   </div>
                 </div>
                 <span className="text-sm font-medium text-center text-foreground group-hover:text-brand-blue transition-colors">{category.name}</span>

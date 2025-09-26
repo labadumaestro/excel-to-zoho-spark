@@ -68,10 +68,15 @@ export const Navigation = () => {
               <Button
                 key={category}
                 variant="ghost"
-                className="whitespace-nowrap text-sm hover:text-brand-blue font-medium"
+                className="whitespace-nowrap text-sm hover:text-brand-blue font-medium flex flex-col items-center gap-2 py-4 px-3"
               >
-                {category}
-                {category === "More" && " ▼"}
+                <div className="w-8 h-8 bg-gradient-to-br from-muted to-muted/60 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                  <div className="w-full h-full bg-brand-blue/5 flex items-center justify-center rounded-md border border-dashed border-brand-blue/20">
+                    <span className="text-xs text-muted-foreground">IMG</span>
+                  </div>
+                </div>
+                <span className="text-xs">{category}</span>
+                {category === "More" && <span className="text-xs">▼</span>}
               </Button>
             ))}
           </div>
